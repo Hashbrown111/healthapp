@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#23685d">
+<title>安心同行｜家庭健康管理</title>
+<style>
+:root{--ink:#183b36;--muted:#667b76;--green:#23685d;--green2:#dcefe8;--cream:#f5f6ff;--card:#fff;--line:#e5e7f0;--gold:#f2c66d;--red:#b54747;--coral:#ff8d7a;--lavender:#e9e3ff;--blue:#dff1ff;--mint:#dcf5e8;--peach:#fff0df;--shadow:0 12px 35px rgba(51,55,105,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:1180px;margin:auto;padding:22px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0 24px}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:16px;background:var(--green);color:white;display:grid;place-items:center;font-size:25px}.brand h1{font-size:21px;margin:0}.brand p{font-size:12px;color:var(--muted);margin:2px 0 0}.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:12px;padding:9px 13px;font-weight:650}.btn.primary{background:var(--green);color:#fff;border-color:var(--green)}.btn.soft{background:var(--green2);border-color:transparent}.btn.danger{color:var(--red)}
+.hero{background:linear-gradient(120deg,#1f5b50,#357f6e);color:#fff;border-radius:26px;padding:28px;display:grid;grid-template-columns:1.4fr .8fr;gap:24px;box-shadow:var(--shadow)}.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}.hero h2{font-size:clamp(25px,4vw,38px);line-height:1.2;margin:9px 0 12px}.hero p{max-width:600px;margin:0;color:#e0f0ea}.hero-side{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:20px;align-self:stretch}.hero-side strong{font-size:27px;display:block}.hero-side span{font-size:13px;color:#e0f0ea}.progress{height:8px;border-radius:20px;background:rgba(255,255,255,.25);overflow:hidden;margin:12px 0}.progress i{height:100%;display:block;width:0;background:#f2d58d;border-radius:20px;transition:width .2s}
+.nav{display:flex;gap:8px;overflow:auto;padding:18px 0 14px}.nav button{white-space:nowrap;border:0;border-radius:12px;padding:10px 15px;background:transparent;color:var(--muted);font-weight:700}.nav button.active{background:#e1eee7;color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow);min-width:0}.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-12{grid-column:span 12}.card h3{margin:0 0 5px;font-size:17px}.sub{font-size:13px;color:var(--muted);margin:0 0 17px}.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:#f7faf7;border:1px solid var(--line);border-radius:15px;padding:14px}.stat .num{font-size:25px;font-weight:800}.stat small{display:block;color:var(--muted);font-size:12px}
+.checklist{display:grid;gap:10px}.checkitem{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);padding:12px;border-radius:14px}.checkitem input{accent-color:var(--green);width:18px;height:18px;margin-top:4px}.checkitem strong{display:block;font-size:14px}.checkitem small{color:var(--muted)}
+.weekstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.week{border:1px solid var(--line);border-radius:14px;padding:12px 8px;text-align:center;background:#fbfcfa}.week .bubble{width:32px;height:32px;display:grid;place-items:center;background:var(--green2);border-radius:50%;margin:0 auto 7px;font-weight:800}.week small{display:block;color:var(--muted);font-size:11px}
+label{font-size:13px;font-weight:700;display:block;margin:0 0 6px}input,select,textarea{width:100%;padding:10px 12px;border:1px solid #d7e2dc;border-radius:11px;background:#fff;color:var(--ink);outline:none}input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px #23685d18}textarea{resize:vertical;min-height:84px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field.full{grid-column:1/-1}.form-actions{display:flex;gap:8px;margin-top:15px;flex-wrap:wrap}
+.record{padding:14px 0;border-bottom:1px solid var(--line)}.record:last-child{border-bottom:0}.recordtop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.record h4{margin:0;font-size:14px}.record p{margin:5px 0;color:var(--muted);font-size:13px}.tag{display:inline-flex;background:#eaf4ef;color:#23685d;border-radius:99px;padding:3px 9px;font-size:11px;font-weight:700}
+.empty{border:1px dashed #cad8d0;border-radius:14px;padding:22px;text-align:center;color:var(--muted);font-size:13px}.alert{background:#fff7e5;border:1px solid #f1dfb0;border-radius:15px;padding:14px 16px;color:#6b5220;font-size:13px}.alert strong{display:block;margin-bottom:4px}.planlist{display:grid;gap:12px}.planrow{display:grid;grid-template-columns:40px 1fr;gap:12px}.planicon{width:40px;height:40px;background:var(--green2);border-radius:13px;display:grid;place-items:center;font-size:19px}.planrow h4{margin:0;font-size:14px}.planrow p{margin:3px 0 0;color:var(--muted);font-size:13px}
+footer{padding:26px 4px 10px;color:var(--muted);font-size:12px;text-align:center}.hidden{display:none!important}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#173e36;color:#fff;padding:11px 18px;border-radius:12px;box-shadow:var(--shadow);z-index:5}
+
+.game-intro{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.game-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+.game-tabs button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 13px;color:var(--ink);font-weight:700}
+.game-tabs button.active{background:var(--green);color:#fff;border-color:var(--green)}
+.game-panel{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fbfcfa}
+.game-question{font-size:18px;font-weight:800;margin:8px 0 14px}
+.game-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.game-option{border:1px solid #d7e2dc;background:#fff;border-radius:12px;padding:12px;text-align:left;color:var(--ink)}
+.game-option:hover{border-color:var(--green);background:#f0f7f3}
+.game-option:disabled{cursor:default;opacity:1}
+.game-option.correct{border-color:#2f8060;background:#e4f4eb}
+.game-option.wrong{border-color:#bd6262;background:#fff0f0}
+.game-feedback{margin-top:12px;padding:11px 13px;border-radius:12px;background:#eaf4ef;font-size:14px}
+.game-score{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+.game-score span{background:#f0f5f1;border-radius:12px;padding:8px 12px;font-size:13px}
+.memory-board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0}
+.memory-card{min-height:66px;border:1px solid var(--line);border-radius:12px;background:#e1eee7;font-size:23px;font-weight:800;color:var(--green)}
+.memory-card.open,.memory-card.matched{background:#fff;border-color:#8db9a7}
+.memory-card.matched{background:#e4f4eb}
+@media(max-width:480px){.game-options{grid-template-columns:1fr}.memory-card{min-height:56px}}
+
+
+/* Colorful, friendly visual refresh */
+body{background:radial-gradient(ellipse at 8% 4%,#e9f7f0 0,transparent 27%),radial-gradient(ellipse at 95% 12%,#f0eaff 0,transparent 25%),var(--cream)}
+.logo{background:linear-gradient(135deg,#23685d,#4aa88d);box-shadow:0 8px 18px #23685d30}
+.hero{background:linear-gradient(120deg,#225e55 0%,#328a78 58%,#5c9fe0 125%);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:#ffffff12;right:18%;top:-155px;pointer-events:none}
+.hero h2{position:relative;z-index:1}
+.hero-side{position:relative;z-index:1;background:linear-gradient(145deg,#ffffff24,#ffffff0c)}
+.card{transition:transform .18s ease,box-shadow .18s ease;border-top:3px solid transparent}
+.card:hover{box-shadow:0 15px 38px rgba(51,55,105,.13)}
+#page-home .card:nth-child(1){border-top-color:#64b99a}
+#page-home .card:nth-child(2){border-top-color:#9d8be8}
+#page-home .card:nth-child(3){border-top-color:#f1b86b}
+#page-home .card:nth-child(4){border-top-color:#7bbbe8}
+#page-actions .card:nth-child(1){border-top-color:#64b99a}
+#page-actions .card:nth-child(2){border-top-color:#f1b86b}
+#page-records .card:nth-child(1){border-top-color:#7bbbe8}
+#page-records .card:nth-child(2){border-top-color:#9d8be8}
+#page-plan .card{border-top-color:#64b99a}
+#page-guide .card:nth-child(1){border-top-color:#f1b86b}
+#page-guide .card:nth-child(2){border-top-color:#9d8be8}
+.nav button{transition:background .18s,color .18s}
+.nav button.active{background:linear-gradient(135deg,#d9f1e5,#e8e4ff);color:#245f54}
+.btn.primary{background:linear-gradient(135deg,#23685d,#398d79);box-shadow:0 4px 10px #23685d20}
+.btn.soft{background:#e5f4eb;color:#23685d}
+.stat:nth-child(1){background:linear-gradient(135deg,#e5f6ec,#f7fbf7)}
+.stat:nth-child(2){background:linear-gradient(135deg,#e8f2ff,#f8fbff)}
+.stat:nth-child(3){background:linear-gradient(135deg,#fff0df,#fffaf3)}
+.planicon{background:linear-gradient(135deg,#e2f4eb,#e8e4ff);box-shadow:inset 0 0 0 1px #ffffff}
+.week:nth-child(1){background:#e8f6ed}.week:nth-child(2){background:#eeebff}.week:nth-child(3){background:#e5f3ff}.week:nth-child(4){background:#fff0df}
+.week:nth-child(2) .bubble{background:#d9d1ff}.week:nth-child(3) .bubble{background:#cde9ff}.week:nth-child(4) .bubble{background:#ffdfb7}
+.checkitem{background:linear-gradient(100deg,#ffffff,#fbfcff)}
+.checkitem:hover{border-color:#9fcdbb}
+.game-panel{background:linear-gradient(135deg,#fbfffc,#f8f7ff);border-color:#e2e4f0}
+.game-tabs button.active{background:linear-gradient(135deg,#23685d,#398d79)}
+.game-option:nth-child(4n+1){background:#f0faf4}.game-option:nth-child(4n+2){background:#f4f1ff}.game-option:nth-child(4n+3){background:#edf7ff}.game-option:nth-child(4n){background:#fff5e9}
+.game-option.correct{background:#dff5e8!important}
+.game-option.wrong{background:#ffe8e6!important}
+.memory-card{background:linear-gradient(135deg,#dff3e8,#e7e4ff);border-color:#d9dced}
+.memory-card.open{background:#fff0d9}
+.memory-card.matched{background:#dff5e8}
+.tag{background:#e5f1ff;color:#355f9b}
+.alert{background:linear-gradient(120deg,#fff6df,#fffaf0);border-color:#f1dfb0}
+.section-illustration{display:flex;align-items:center;gap:14px;padding:13px 16px;margin:0 0 16px;border-radius:18px;background:linear-gradient(110deg,#e4f5eb,#e8e4ff 58%,#e4f2ff);border:1px solid #e2e5f0}
+.section-illustration .art{font-size:36px;line-height:1}
+.section-illustration strong{display:block;font-size:14px}
+.section-illustration span{display:block;color:var(--muted);font-size:12px}
+.art-bubbles{display:flex;gap:7px;margin-left:auto;font-size:20px}
+
+@media(max-width:760px){.app{padding:14px}.hero{grid-template-columns:1fr;padding:22px}.hero-side{padding:15px}.span-8,.span-7,.span-6,.span-5,.span-4{grid-column:span 12}.statrow{gap:7px}.stat{padding:10px}.stat .num{font-size:21px}.weekstrip{grid-template-columns:repeat(2,1fr)}header{align-items:flex-start}.brand h1{font-size:18px}.top-actions .btn{padding:8px 10px;font-size:12px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+
+/* Health companion, daily check-in badges, and celebration animation */
+.companion-card{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center;margin:0 0 16px;padding:18px;border:1px solid #dce9e3;border-radius:22px;background:linear-gradient(120deg,#fff8e9,#f1fff7 58%,#f3f0ff);box-shadow:var(--shadow)}
+.companion-avatar{width:100px;height:100px;border-radius:28px;display:grid;place-items:center;font-size:55px;background:radial-gradient(circle at 35% 25%,#fff 0 15%,transparent 16%),linear-gradient(145deg,#ffe7a8,#ffc9bb);box-shadow:inset 0 -5px 0 #e7b68b55;animation:buddyFloat 3s ease-in-out infinite}
+.companion-copy h3{margin:0 0 4px;font-size:18px}.companion-copy p{margin:0 0 10px;color:var(--muted);font-size:13px}
+.companion-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.streak-pill{display:inline-flex;align-items:center;gap:5px;border-radius:99px;padding:7px 11px;background:#fff0d7;color:#8b5713;font-weight:800;font-size:13px}
+.badge-shelf{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.badge-chip{min-width:90px;flex:1;border:1px solid #e4e5f0;border-radius:14px;padding:10px 8px;text-align:center;background:#ffffffb8;color:#718078;font-size:11px;opacity:.62}
+.badge-chip .badge-icon{font-size:24px;display:block;filter:grayscale(1);margin-bottom:3px}
+.badge-chip.unlocked{opacity:1;background:linear-gradient(145deg,#fff,#f0fff6);border-color:#a9d9bd;color:#255e4b;box-shadow:0 5px 13px #23685d12}
+.badge-chip.unlocked .badge-icon{filter:none}
+.reward-overlay{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:#143b3280;backdrop-filter:blur(5px)}
+.reward-modal{position:relative;overflow:hidden;width:min(420px,100%);text-align:center;padding:28px 24px 24px;border-radius:26px;background:linear-gradient(155deg,#fffdf6,#f0fff7 65%,#f3efff);box-shadow:0 24px 80px #102e2a55;animation:rewardPop .42s cubic-bezier(.2,.8,.2,1)}
+.reward-sparkles{font-size:24px;letter-spacing:8px;animation:sparklePulse .8s ease-in-out infinite alternate}
+.reward-character{font-size:72px;line-height:1.2;margin:6px 0;animation:buddyBounce .7s ease-in-out infinite alternate}
+.reward-modal h3{font-size:23px;margin:7px 0}.reward-modal p{color:var(--muted);margin:0 0 18px}
+@keyframes buddyFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@keyframes rewardPop{0%{transform:translateY(22px) scale(.78);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
+@keyframes buddyBounce{from{transform:translateY(0) rotate(-4deg)}to{transform:translateY(-8px) rotate(4deg)}}
+@keyframes sparklePulse{from{opacity:.5;transform:scale(.95)}to{opacity:1;transform:scale(1.06)}}
+@media(max-width:560px){.companion-card{grid-template-columns:76px 1fr;padding:14px;gap:12px}.companion-avatar{width:72px;height:72px;border-radius:22px;font-size:42px}.badge-chip{min-width:72px}.badge-chip .badge-icon{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.companion-avatar,.reward-character,.reward-sparkles,.reward-modal{animation:none!important}}
+
+
+/* App information architecture: sidebar + workspace + responsive mobile navigation */
+.app{max-width:none;margin:0;padding:0;min-height:100vh;display:grid;grid-template-columns:238px minmax(0,1fr);gap:0}
+.sidebar{position:sticky;top:0;height:100vh;padding:24px 15px;background:linear-gradient(180deg,#f8fffb,#f2f0ff);border-right:1px solid #e1e8e3;display:flex;flex-direction:column;gap:25px;z-index:10}
+.sidebar-brand{display:flex;align-items:center;gap:11px;padding:0 8px}.sidebar-brand .logo{flex:0 0 46px}.sidebar-brand h1{font-size:19px;margin:0}.sidebar-brand p{font-size:11px;color:var(--muted);margin:2px 0 0}
+.sidebar-caption{font-size:10px;letter-spacing:.14em;font-weight:800;color:#8a9a94;padding:0 12px;margin-bottom:-15px}
+.nav{display:grid;gap:5px;overflow:visible;padding:0;margin:0}.nav button{display:flex;align-items:center;gap:11px;text-align:left;width:100%;white-space:normal;padding:12px 13px;border-radius:13px;font-size:14px}.nav button .nav-icon{width:23px;text-align:center;font-size:18px}.nav button.active{background:linear-gradient(120deg,#d9f1e5,#e8e4ff);color:#245f54;box-shadow:0 4px 12px #23685d0d}
+.sidebar-note{margin-top:auto;background:#fff;border:1px solid #e2e9e4;border-radius:16px;padding:13px;font-size:12px;color:var(--muted)}.sidebar-note strong{display:block;color:var(--ink);margin-bottom:4px}
+.workspace{min-width:0;padding:0 28px 24px;max-width:1500px;width:100%;margin:0 auto}.workspace header{position:sticky;top:0;z-index:8;padding:17px 0 14px;background:#f7f8ffed;backdrop-filter:blur(12px);border-bottom:1px solid #e6e9ef;margin-bottom:20px}.workspace .header-title{font-size:20px;font-weight:850}.workspace .header-subtitle{font-size:12px;color:var(--muted)}
+.hero{margin-bottom:18px}.page{animation:pageEnter .22s ease-out}@keyframes pageEnter{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:4px 0 17px}.page-heading h2{font-size:24px;margin:0}.page-heading p{font-size:13px;color:var(--muted);margin:4px 0 0}
+footer{margin-top:20px}
+@media(max-width:900px){.app{grid-template-columns:190px minmax(0,1fr)}.sidebar{padding:20px 10px}.workspace{padding:0 18px 95px}.sidebar-brand h1{font-size:17px}.sidebar-brand{padding:0 4px}}
+@media(max-width:680px){.app{display:block;padding-bottom:78px}.sidebar{position:fixed;top:auto;bottom:0;left:0;right:0;width:100%;height:auto;padding:7px 8px calc(7px + env(safe-area-inset-bottom));border-right:0;border-top:1px solid #dfe8e2;background:#ffffffed;backdrop-filter:blur(15px);display:block}.sidebar-brand,.sidebar-caption,.sidebar-note{display:none}.nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px}.nav button{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:7px 1px;border-radius:11px;font-size:10px;text-align:center;line-height:1.25}.nav button .nav-icon{font-size:19px;width:auto}.workspace{padding:0 13px 20px}.workspace header{padding:12px 0;margin-bottom:15px}.workspace .header-title{font-size:18px}.top-actions{gap:5px}.top-actions .btn{font-size:11px;padding:7px 8px}.hero{margin-bottom:15px}.page-heading h2{font-size:21px}.section-illustration{gap:10px;padding:11px}.section-illustration .art{font-size:29px}.art-bubbles{display:none}.companion-card{margin-bottom:14px}}
+@media(max-width:380px){.nav button{font-size:9px}.nav button .nav-icon{font-size:17px}.top-actions #printBtn{display:none}}
+@media(prefers-reduced-motion:reduce){.page{animation:none}}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" aria-label="應用程式側邊導覽">
+  <div class="sidebar-brand"><div class="logo">♡</div><div><h1>安心同行</h1><p>家庭健康管理</p></div></div>
+  <div class="sidebar-caption">照護工作台</div>
+  <nav class="nav" aria-label="主要導覽">
+    <button class="active" data-page="home"><span class="nav-icon">🏠</span><span>健康總覽</span></button>
+    <button data-page="actions"><span class="nav-icon">🎯</span><span>每日行動</span></button>
+    <button data-page="records"><span class="nav-icon">📒</span><span>健康紀錄</span></button>
+    <button data-page="plan"><span class="nav-icon">🗓️</span><span>四週計畫</span></button>
+    <button data-page="guide"><span class="nav-icon">🩺</span><span>健康提醒</span></button>
+    <button data-page="games"><span class="nav-icon">🎮</span><span>互動小遊戲</span></button>
+  </nav>
+  <div class="sidebar-note"><strong>💚 每天一點點</strong>不必一次做到完美，持續的小行動也值得鼓勵。</div>
+</aside>
+<div class="workspace">
+<header>
+  <div><div class="header-title" id="currentPageTitle">健康總覽</div><div class="header-subtitle">家庭健康管理・微行動計畫</div></div>
+  <div class="top-actions"><button class="btn" id="exportBtn">匯出紀錄</button><button class="btn primary" id="printBtn">列印／存成 PDF</button></div>
+</header>
+<section id="page-home" class="page">
+<section class="hero">
+  <div><div class="eyebrow">Family wellness · 4-week plan</div><h2>把關心，變成每天做得到的小行動。</h2><p>依據「微行動健康問題解決方案」整理，協助家人追蹤飲食、作息、血糖與關節狀況。每一次紀錄，都是持續照顧的一步。</p></div>
+  <div class="hero-side"><div style="font-size:26px;letter-spacing:5px;margin-bottom:6px" aria-hidden="true">🌿 💚 ☀️</div><span>本週行動完成率</span><strong id="completion">0%</strong><div class="progress"><i id="progressbar"></i></div><span id="completedText">已完成 0 項行動</span></div>
+</section>
+<div class="section-illustration"><div class="art">🌱</div><div><strong>每天一點點，健康多一點</strong><span>從日常小習慣開始，和家人一起累積改變。</span></div><div class="art-bubbles">🥗 🌙 💚</div></div>
+
+
+<div class="companion-card" aria-label="健康照護夥伴與每日徽章">
+  <div class="companion-avatar" aria-hidden="true">🐻‍❄️</div>
+  <div class="companion-copy">
+    <h3>小安陪你一起養成健康習慣！</h3>
+    <p id="buddyMessage">嗨！今天也一起完成一件照顧自己的小事吧。每一天都值得被鼓勵 💚</p>
+    <div class="companion-actions">
+      <span class="streak-pill" id="streakPill">🔥 連續打卡 0 天</span>
+      <button class="btn primary" id="dailyCheckin">🌟 今日打卡</button>
+    </div>
+  </div>
+  <div class="badge-shelf" id="badgeShelf" style="grid-column:1/-1" aria-label="已獲得的徽章">
+    <div class="badge-chip" data-badge="first"><span class="badge-icon">🌱</span>初次打卡</div>
+    <div class="badge-chip" data-badge="three"><span class="badge-icon">🔥</span>連續 3 天</div>
+    <div class="badge-chip" data-badge="seven"><span class="badge-icon">🌈</span>連續 7 天</div>
+    <div class="badge-chip" data-badge="helper"><span class="badge-icon">💚</span>暖心照護</div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card span-8"><h3>今日照護摘要</h3><p class="sub" id="todayLabel"></p><div class="statrow">
+    <div class="stat"><div class="num" id="actionStat">0/5</div><small>今日行動</small></div>
+    <div class="stat"><div class="num" id="recordStat">0</div><small>健康紀錄筆數</small></div>
+    <div class="stat"><div class="num" id="streakStat">4 週</div><small>建議追蹤週期</small></div>
+  </div><div style="height:18px"></div><h3>今天可以做的事</h3><p class="sub">勾選完成的項目，進度會自動更新。</p><div id="homeActions" class="checklist"></div></div>
+  <div class="card span-4"><h3>四週追蹤進度</h3><p class="sub">依方案建議逐步執行</p><div class="weekstrip">
+    <div class="week"><div class="bubble">1</div><b>了解現況</b><small>飲食・作息・用藥</small></div>
+    <div class="week"><div class="bubble">2</div><b>建立習慣</b><small>飲食・睡眠</small></div>
+    <div class="week"><div class="bubble">3</div><b>持續觀察</b><small>症狀・血糖</small></div>
+    <div class="week"><div class="bubble">4</div><b>回顧調整</b><small>整理紀錄・回診</small></div>
+  </div><div style="height:16px"></div><div class="alert"><strong>重要提醒</strong>血糖偏高且有疲勞、視力模糊時，請安排醫療評估；突然視力改變或急性嚴重不適，應立即就醫。</div></div>
+  <div class="card span-7"><h3>最近的健康紀錄</h3><p class="sub">查看最近新增的血糖與身體狀況</p><div id="recentRecords"></div><button class="btn soft" data-goto="records">新增或查看紀錄 →</button></div>
+  <div class="card span-5"><h3>照護重點</h3><p class="sub">把方案拆成可執行的日常步驟</p><div class="planlist">
+    <div class="planrow"><div class="planicon">🥗</div><div><h4>飲食管理</h4><p>規律用餐，減少含糖飲料與過量甜食，依專業建議調整飲食。</p></div></div>
+    <div class="planrow"><div class="planicon">🌙</div><div><h4>規律作息</h4><p>盡量固定睡眠時間，適當休息，避免過度勞累。</p></div></div>
+    <div class="planrow"><div class="planicon">🩺</div><div><h4>健康追蹤</h4><p>依指示量測血糖、記錄關節不適，按時回診與用藥。</p></div></div>
+    <div class="planrow"><div class="planicon">🤝</div><div><h4>家人支持</h4><p>每週主動聊天，陪伴回診，將關心化為實際協助。</p></div></div>
+  </div></div>
+</div>
+</section>
+
+<section id="page-actions" class="page hidden"><div class="page-heading"><div><h2>每日行動</h2><p>把健康照護拆成每天做得到的小任務。</p></div></div>
+<div class="section-illustration"><div class="art">🎯</div><div><strong>今日健康任務</strong><span>完成一個小行動，也值得給自己一個鼓勵。</span></div><div class="art-bubbles">💧 ☀️ ⭐</div></div>
+
+<div class="grid"><div class="card span-7"><h3>每日行動清單</h3><p class="sub">完成後勾選；每天的勾選狀態會分開保存。</p><div id="actionList" class="checklist"></div></div>
+<div class="card span-5"><h3>設定提醒目標</h3><p class="sub">選擇今天最想維持的習慣。</p><div class="checklist">
+<label class="checkitem"><input type="checkbox" class="habit" data-habit="water"><span><strong>留意適當補充水分</strong><small>若有飲水限制，先依醫囑調整。</small></span></label>
+<label class="checkitem"><input type="checkbox" class="habit" data-habit="sleep"><span><strong>維持規律睡眠</strong><small>盡量固定就寢與起床時間。</small></span></label>
+<label class="checkitem"><input type="checkbox" class="habit" data-habit="family"><span><strong>主動關心家人</strong><small>花幾分鐘了解今天的身體狀況。</small></span></label>
+</div><p style="font-size:12px;color:var(--muted);margin-top:14px">此頁是生活支持工具，不能取代醫師的診斷或治療指示。</p></div></div>
+</section>
+
+<section id="page-records" class="page hidden"><div class="page-heading"><div><h2>健康紀錄</h2><p>集中管理測量數值、身體狀況與生活觀察。</p></div></div>
+<div class="section-illustration"><div class="art">📒</div><div><strong>把身體的訊息好好記下來</strong><span>紀錄是和醫療人員討論時的重要參考。</span></div><div class="art-bubbles">🩺 📈 💜</div></div>
+
+<div class="grid"><div class="card span-5"><h3 id="formTitle">新增健康紀錄</h3><p class="sub">請依實際測量或觀察填寫，不確定的欄位可留白。</p>
+<form id="recordForm"><input type="hidden" id="editId">
+<div class="formgrid">
+<div class="field"><label for="recordDate">日期</label><input id="recordDate" type="date" required></div>
+<div class="field"><label for="recordTime">時間</label><input id="recordTime" type="time"></div>
+<div class="field"><label for="glucose">血糖數值（mg/dL）</label><input id="glucose" type="number" min="1" max="1500" placeholder="例如：依血糖機讀數填寫"></div>
+<div class="field"><label for="measureType">測量時機</label><select id="measureType"><option value="">未註明</option><option>空腹</option><option>飯前</option><option>飯後 2 小時</option><option>睡前</option><option>其他</option></select></div>
+<div class="field"><label for="joint">關節狀況</label><select id="joint"><option value="">未註明</option><option>無明顯不適</option><option>輕微不適</option><option>疼痛</option><option>紅腫／活動困難</option></select></div>
+<div class="field"><label for="energy">精神／疲勞程度</label><select id="energy"><option value="">未註明</option><option>精神尚可</option><option>稍微疲勞</option><option>明顯疲勞</option></select></div>
+<div class="field full"><label for="vision">視力或其他症狀</label><input id="vision" placeholder="例如：無特殊變化、視力模糊（請如實記錄）"></div>
+<div class="field full"><label for="notes">備註／生活情況</label><textarea id="notes" placeholder="飲食、睡眠、用藥或其他觀察（不需填寫不確定的原因）"></textarea></div>
+</div><div class="form-actions"><button class="btn primary" type="submit">儲存紀錄</button><button class="btn" type="button" id="cancelEdit">清除欄位</button></div></form></div>
+<div class="card span-7"><h3>健康紀錄列表</h3><p class="sub">可編輯或刪除單筆紀錄；資料保存在目前瀏覽器。</p><div id="allRecords"></div></div></div>
+</section>
+
+<section id="page-plan" class="page hidden"><div class="page-heading"><div><h2>四週計畫</h2><p>依照每週重點，逐步回顧並調整照護方式。</p></div></div>
+<div class="section-illustration"><div class="art">🗓️</div><div><strong>四週陪伴挑戰</strong><span>一步一步建立習慣，不需要一次做到完美。</span></div><div class="art-bubbles">🌿 🤝 ✨</div></div>
+
+<div class="grid"><div class="card span-12"><h3>四週執行與追蹤計畫</h3><p class="sub">可作為家庭健康關懷的起點，實際回診與量測頻率以醫療人員建議為準。</p>
+<div class="grid">
+<div class="card span-3" style="box-shadow:none;background:#f9fbf8"><span class="tag">第一週</span><h3 style="margin-top:10px">了解現況</h3><p class="sub">與爸爸討論健康困擾，確認日常飲食、作息及用藥情況。</p><label><input type="checkbox" class="plancheck" data-plan="1"> 本週已回顧</label></div>
+<div class="card span-3" style="box-shadow:none;background:#f9fbf8"><span class="tag">第二週</span><h3 style="margin-top:10px">建立習慣</h3><p class="sub">調整飲食與睡眠習慣，依指示測量並記錄血糖。</p><label><input type="checkbox" class="plancheck" data-plan="2"> 本週已回顧</label></div>
+<div class="card span-3" style="box-shadow:none;background:#f9fbf8"><span class="tag">第三週</span><h3 style="margin-top:10px">持續觀察</h3><p class="sub">關心關節不適、疲勞與視力變化，整理症狀與血糖紀錄。</p><label><input type="checkbox" class="plancheck" data-plan="3"> 本週已回顧</label></div>
+<div class="card span-3" style="box-shadow:none;background:#f9fbf8"><span class="tag">第四週</span><h3 style="margin-top:10px">回顧調整</h3><p class="sub">一起回顧執行成果，依需要尋求醫療協助。</p><label><input type="checkbox" class="plancheck" data-plan="4"> 本週已回顧</label></div>
+</div></div></div>
+</section>
+
+<section id="page-guide" class="page hidden"><div class="page-heading"><div><h2>健康提醒</h2><p>整理日常照護原則、就醫提醒與資料管理方式。</p></div></div>
+<div class="section-illustration"><div class="art">💡</div><div><strong>健康照護小百科</strong><span>把提醒放在手邊，照顧家人更有方向。</span></div><div class="art-bubbles">🍎 🧡 🩵</div></div>
+
+<div class="grid"><div class="card span-7"><h3>健康管理提醒</h3><p class="sub">依據健康問題解決方案整理的注意事項</p><div class="planlist">
+<div class="planrow"><div class="planicon">🥗</div><div><h4>飲食</h4><p>規律用餐，減少高油、高鹽及過量精製糖；痛風相關飲食依醫療建議調整。</p></div></div>
+<div class="planrow"><div class="planicon">💊</div><div><h4>用藥</h4><p>依照醫囑服藥，不自行停藥、減藥或改變用藥方式。</p></div></div>
+<div class="planrow"><div class="planicon">📋</div><div><h4>紀錄</h4><p>依照醫療人員指示記錄血糖數值、測量時間、關節不適及其他症狀，回診時提供參考。</p></div></div>
+<div class="planrow"><div class="planicon">👨‍⚕️</div><div><h4>就醫</h4><p>血糖偏高伴隨疲勞、視力模糊應安排醫療評估；若突然視力改變或出現急性嚴重症狀，應立即就醫。</p></div></div>
+</div></div>
+<div class="card span-5"><h3>方案文件</h3><p class="sub">可開啟原始 PDF，作為完整方案參考。</p><a class="btn primary" style="display:inline-block;text-decoration:none" href="微行動健康問題解決方案.pdf" target="_blank" rel="noopener">開啟方案 PDF ↗</a><div style="height:18px"></div><h3>資料與隱私</h3><p style="font-size:13px;color:var(--muted)">此版本會將紀錄保存在目前裝置的瀏覽器儲存空間，不會自動同步到其他裝置。請勿在共用裝置輸入不希望他人看到的健康資料。清除瀏覽器資料可能會刪除紀錄，建議定期匯出備份。</p><button class="btn danger" id="clearAll">清除本機所有資料</button></div>
+</div>
+</section>
+
+<section id="page-games" class="page hidden"><div class="page-heading"><div><h2>互動小遊戲</h2><p>透過問答、記憶配對與任務卡增加參與感。</p></div></div>
+<div class="section-illustration"><div class="art">🎮</div><div><strong>邊玩邊學健康知識</strong><span>用問答、配對和微行動，讓健康管理更有趣！</span></div><div class="art-bubbles">🧩 🎉 🌈</div></div>
+
+  <div class="grid">
+    <div class="card span-12">
+      <h3>🌱 健康闖關小天地</h3>
+      <p class="sub">用輕鬆的小遊戲認識健康習慣。答錯也沒關係，看看解說就能學到新知識！</p>
+      <div class="game-tabs" role="tablist">
+        <button class="active" data-game="quiz">健康知識快問快答</button>
+        <button data-game="memory">健康記憶配對</button>
+        <button data-game="mission">今日微行動抽抽樂</button>
+      </div>
+      <div id="game-quiz" class="game-panel">
+        <div class="game-intro"><span class="tag">遊戲 1</span><span id="quizProgress" class="sub" style="margin:0">第 1 題</span></div>
+        <div class="game-question" id="quizQuestion">準備開始了嗎？</div>
+        <div class="game-options" id="quizOptions"></div>
+        <div id="quizFeedback" aria-live="polite"></div>
+        <div class="form-actions"><button class="btn primary" id="quizNext">開始答題</button><button class="btn" id="quizRestart">重新開始</button></div>
+      </div>
+      <div id="game-memory" class="game-panel hidden">
+        <div class="game-intro"><span class="tag">遊戲 2</span><span class="sub" style="margin:0">翻開卡片，找出相同圖案的配對。</span></div>
+        <div class="game-score"><span>已配對：<b id="memoryPairs">0 / 6</b></span><span>翻牌次數：<b id="memoryMoves">0</b></span></div>
+        <div id="memoryBoard" class="memory-board"></div>
+        <button class="btn primary" id="memoryRestart">重新洗牌</button>
+      </div>
+      <div id="game-mission" class="game-panel hidden">
+        <div class="game-intro"><span class="tag">遊戲 3</span><span class="sub" style="margin:0">抽一張今天做得到的關懷任務卡。</span></div>
+        <div id="missionCard" class="alert"><strong>準備好抽任務了嗎？</strong>每次只選擇符合實際情況、做起來安全的行動。</div>
+        <div class="form-actions"><button class="btn primary" id="missionDraw">抽取今日任務</button><button class="btn soft" id="missionDone">我完成了！</button></div>
+        <p id="missionFeedback" class="sub" style="margin-top:12px" aria-live="polite">完成後可以記錄在每日行動清單中。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>安心同行｜家庭健康管理工具　·　僅供日常紀錄與健康關懷，不取代專業醫療建議</footer>
+</div>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
+<div id="rewardOverlay" class="reward-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rewardTitle"><div class="reward-modal"><div class="reward-sparkles" aria-hidden="true">✨ ⭐ ✨</div><div class="reward-character" id="rewardCharacter" aria-hidden="true">🐻‍❄️</div><h3 id="rewardTitle">太棒了！</h3><p id="rewardText">你完成了今天的小小照護任務。</p><button class="btn primary" id="closeReward">收下獎勵 💚</button></div></div>
+<script>
+const ACTIONS=[
+ ["meal","留意今天的飲食是否均衡","依醫療建議安排飲食，減少含糖飲料與過量甜食。"],
+ ["sleep","維持規律作息與適當休息","避免熬夜及過度勞累。"],
+ ["glucose","依醫囑完成血糖測量（如當日需測量）","記下日期、時間與數值；依個人醫療計畫執行。"],
+ ["joint","留意關節狀況","觀察疼痛、紅腫或活動困難等變化。"],
+ ["family","主動關心並確認用藥／回診需求","依醫囑用藥；有需要時協助安排回診。"]
+];
+const $=id=>document.getElementById(id);
+const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`};
+const load=(k,f)=>{try{return JSON.parse(localStorage.getItem("安心同行_"+k))??f}catch{return f}};
+const save=(k,v)=>localStorage.setItem("安心同行_"+k,JSON.stringify(v));
+let records=load("records",[]),checks=load("checks",{}),plans=load("plans",{}),habits=load("habits",{}),checkins=load("checkins",{});
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function showToast(msg){$("toast").textContent=msg;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),2200)}
+function actionMarkup(container){$(container).innerHTML=ACTIONS.map(([id,title,desc])=>`<label class="checkitem"><input type="checkbox" data-action="${id}" ${checks[today()]?.includes(id)?"checked":""}><span><strong>${title}</strong><small>${desc}</small></span></label>`).join("");$(container).querySelectorAll("[data-action]").forEach(el=>el.addEventListener("change",()=>{let a=checks[today()]||[];checks[today()]=el.checked?[...new Set([...a,el.dataset.action])]:a.filter(x=>x!==el.dataset.action);save("checks",checks);renderStats()}))}
+
+// 互動小遊戲
+const quizQuestions = [
+ {q:"爸爸若依醫療人員指示需要測量血糖，哪種做法最有幫助？",o:["只記得大概數字","記錄日期、時間與數值","不舒服才隨意測量"],a:1,why:"依照醫療人員指示測量，並記下日期、時間和數值，回診時可提供參考。"},
+ {q:"關節出現疼痛或紅腫時，應該怎麼做？",o:["勉強做激烈運動","忽略它就好","留意並記錄變化，必要時尋求醫療建議"],a:2,why:"觀察疼痛、紅腫或活動困難等變化，活動方式應依身體狀況與專業建議調整。"},
+ {q:"關於服藥，哪個做法比較恰當？",o:["依照醫囑服藥","感覺好多了就自行停藥","自行加倍服用"],a:0,why:"應依照醫囑服藥，不自行停藥、減藥或改變用藥方式。"},
+ {q:"想支持家人的健康管理，可以怎麼做？",o:["責備他沒有做好","每週主動聊天，了解身體狀況","完全不討論健康"],a:1,why:"主動關心、陪伴與實際協助，能讓家人在健康管理過程中獲得支持。"},
+ {q:"如果突然出現視力改變或急性嚴重不適，應該怎麼辦？",o:["等下個月再看看","只靠遊戲測驗判斷","立即尋求醫療協助"],a:2,why:"突然視力改變或急性嚴重症狀需要立即尋求醫療協助。"},
+ {q:"建立生活習慣時，哪一項較適合？",o:["盡量固定睡眠時間並適當休息","連續熬夜補進度","不管關節狀況強迫運動"],a:0,why:"維持規律作息、適當休息，活動則要考量身體狀況並遵循專業建議。"}
+];
+let quizIndex=0, quizScore=0, quizAnswered=false;
+function renderQuiz(){
+ const q=quizQuestions[quizIndex];
+ $("quizProgress").textContent=`第 ${quizIndex+1} / ${quizQuestions.length} 題・答對 ${quizScore} 題`;
+ $("quizQuestion").textContent=q.q;
+ $("quizOptions").innerHTML=q.o.map((v,i)=>`<button class="game-option" data-answer="${i}">${String.fromCharCode(65+i)}. ${v}</button>`).join("");
+ $("quizFeedback").innerHTML="";
+ $("quizNext").textContent="下一題";
+ $("quizNext").disabled=true; quizAnswered=false;
+ $("quizOptions").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+   if(quizAnswered)return; quizAnswered=true;
+   const chosen=Number(b.dataset.answer);
+   if(chosen===q.a)quizScore++;
+   $("quizOptions").querySelectorAll("button").forEach((btn,i)=>{btn.disabled=true;if(i===q.a)btn.classList.add("correct");if(i===chosen&&chosen!==q.a)btn.classList.add("wrong")});
+   $("quizFeedback").innerHTML=`<div class="game-feedback"><b>${chosen===q.a?"答對了！":"再記住這個重點："}</b>${q.why}</div>`;
+   $("quizProgress").textContent=`第 ${quizIndex+1} / ${quizQuestions.length} 題・答對 ${quizScore} 題`;
+   $("quizNext").disabled=false;
+ });
+}
+$("quizNext").onclick=()=>{
+ if(!quizAnswered){quizIndex=0;quizScore=0;renderQuiz();return}
+ if(quizIndex<quizQuestions.length-1){quizIndex++;renderQuiz()}
+ else{$("quizQuestion").textContent=`闖關完成！你答對 ${quizScore} / ${quizQuestions.length} 題`; $("quizOptions").innerHTML="";$("quizFeedback").innerHTML='<div class="game-feedback">謝謝你一起學習健康照護。記得：遊戲內容不能取代醫療人員的建議。</div>';$("quizProgress").textContent="完成";$("quizNext").textContent="再玩一次";quizAnswered=false;$("quizNext").onclick=()=>{quizIndex=0;quizScore=0;$("quizNext").onclick=quizNextHandler;renderQuiz()}}
+};
+const quizNextHandler=$("quizNext").onclick;
+$("quizRestart").onclick=()=>{quizIndex=0;quizScore=0;$("quizNext").onclick=quizNextHandler;renderQuiz()};
+
+const memoryEmojis=["🥗","🌙","🩺","🤝","💧","📋"];
+let memoryDeck=[],memoryOpen=[],memoryMatched=[],memoryMoves=0,memoryLock=false;
+function startMemory(){
+ memoryDeck=[...memoryEmojis,...memoryEmojis].sort(()=>Math.random()-.5);
+ memoryOpen=[];memoryMatched=[];memoryMoves=0;memoryLock=false;renderMemory();
+}
+function renderMemory(){
+ $("memoryPairs").textContent=`${memoryMatched.length/2} / ${memoryEmojis.length}`;$("memoryMoves").textContent=memoryMoves;
+ $("memoryBoard").innerHTML=memoryDeck.map((v,i)=>`<button class="memory-card ${memoryOpen.includes(i)?"open":""} ${memoryMatched.includes(i)?"matched":""}" data-card="${i}" aria-label="卡片 ${i+1}">${memoryOpen.includes(i)||memoryMatched.includes(i)?v:"?"}</button>`).join("");
+ $("memoryBoard").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+  const i=Number(b.dataset.card);if(memoryLock||memoryOpen.includes(i)||memoryMatched.includes(i))return;
+  memoryOpen.push(i);renderMemory();
+  if(memoryOpen.length===2){memoryMoves++;const [a,c]=memoryOpen;
+   if(memoryDeck[a]===memoryDeck[c]){memoryMatched.push(a,c);memoryOpen=[];renderMemory();if(memoryMatched.length===memoryDeck.length)showToast(`配對完成！共翻牌 ${memoryMoves} 次`)}
+   else{memoryLock=true;setTimeout(()=>{memoryOpen=[];memoryLock=false;renderMemory()},750)}
+  }
+ });
+}
+$("memoryRestart").onclick=startMemory;
+
+const missions=[
+ ["🥗","和家人一起想想今天的餐點如何更均衡。"],
+ ["🌙","聊聊今晚怎麼安排休息，盡量維持規律作息。"],
+ ["💬","主動問候家人今天的身體感受與生活近況。"],
+ ["📋","若今天有健康紀錄，協助整理日期、時間與觀察。"],
+ ["💧","提醒家人留意適當補充水分；若有飲水限制，依醫囑調整。"],
+ ["🤝","詢問家人是否需要協助安排回診或整理問題。"]
+];
+let currentMission=null;
+$("missionDraw").onclick=()=>{currentMission=missions[Math.floor(Math.random()*missions.length)];$("missionCard").innerHTML=`<strong>${currentMission[0]} 今日微行動</strong>${currentMission[1]}`;$("missionFeedback").textContent="這是建議任務，可依實際情況調整，不必勉強。"};
+$("missionDone").onclick=()=>{if(!currentMission){$("missionFeedback").textContent="請先抽取一張任務卡。";return}$("missionFeedback").textContent="做得好！若適用，也可以到「每日行動」勾選相關項目。";showToast("已完成今日微行動！")};
+
+document.querySelectorAll("[data-game]").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("[data-game]").forEach(x=>x.classList.toggle("active",x===b));
+ ["quiz","memory","mission"].forEach(k=>$("game-"+k).classList.toggle("hidden",k!==b.dataset.game));
+});
+
+
+const BADGES = [
+ {id:"first",name:"初次打卡",icon:"🌱",test:()=>Object.keys(checkins).length>=1},
+ {id:"three",name:"連續 3 天",icon:"🔥",test:()=>getStreak()>=3},
+ {id:"seven",name:"連續 7 天",icon:"🌈",test:()=>getStreak()>=7},
+ {id:"helper",name:"暖心照護",icon:"💚",test:()=>Object.values(checks).some(v=>Array.isArray(v)&&v.length>0)}
+];
+function getStreak(){
+ let n=0; const d=new Date();
+ const keyToday=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+ if(!checkins[keyToday])d.setDate(d.getDate()-1);
+ while(true){const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  if(!checkins[key])break;n++;d.setDate(d.getDate()-1);
+ } return n;
+}
+function renderCompanion(){
+ const streak=getStreak();
+ $("streakPill").textContent=`🔥 連續打卡 ${streak} 天`;
+ $("dailyCheckin").disabled=!!checkins[today()];
+ $("dailyCheckin").textContent=checkins[today()]?"✅ 今日已打卡":"🌟 今日打卡";
+ $("buddyMessage").textContent=checkins[today()]?"今天的打卡已完成！小安替你感到開心，明天再一起累積一顆星星吧。":streak>=3?"連續努力很不容易！今天也用一個小行動照顧自己吧。":"嗨！今天也一起完成一件照顧自己的小事吧。每一天都值得被鼓勵 💚";
+ document.querySelectorAll("[data-badge]").forEach(el=>{
+  const badge=BADGES.find(b=>b.id===el.dataset.badge);
+  if(badge)el.classList.toggle("unlocked",badge.test());
+ });
+}
+function celebrate(title,detail,character="🐻‍❄️"){
+ $("rewardTitle").textContent=title;$("rewardText").textContent=detail;$("rewardCharacter").textContent=character;
+ $("rewardOverlay").classList.remove("hidden");
+}
+$("closeReward").onclick=()=>$("rewardOverlay").classList.add("hidden");
+$("rewardOverlay").addEventListener("click",e=>{if(e.target===$("rewardOverlay"))$("rewardOverlay").classList.add("hidden")});
+$("dailyCheckin").onclick=()=>{
+ if(checkins[today()])return;
+ const before=getStreak();
+ checkins[today()]=true;save("checkins",checkins);
+ renderCompanion();
+ const after=getStreak();
+ let title="今日打卡成功！",detail="你為今天的健康照護留下了一個小小的記號。",emoji="🌱";
+ if(after===1){title="獲得初次打卡徽章！";detail="恭喜解鎖「初次打卡」！每一次小小的開始都值得慶祝。";emoji="🌱"}
+ if(after===3){title="連續 3 天！";detail="你解鎖了「連續 3 天」徽章，穩定累積真的很棒！";emoji="🔥"}
+ if(after===7){title="連續 7 天！";detail="你解鎖了「連續 7 天」徽章！送你一條彩虹，繼續按照自己的步調前進。";emoji="🌈"}
+ if(after>1&&after!==3&&after!==7){title=`連續打卡 ${after} 天！`;detail="謝謝你持續照顧自己與家人。記得量力而為，休息也是照護的一部分。";emoji="💚"}
+ celebrate(title,detail,emoji);showToast("今日打卡已保存！");
+};
+
+function renderStats(){let done=checks[today()]||[];let pct=Math.round(done.length/ACTIONS.length*100);$("completion").textContent=pct+"%";$("progressbar").style.width=pct+"%";$("completedText").textContent=`已完成 ${done.length} / ${ACTIONS.length} 項行動`;$("actionStat").textContent=`${done.length}/${ACTIONS.length}`;$("recordStat").textContent=records.length;$("todayLabel").textContent=new Date().toLocaleDateString("zh-TW",{year:"numeric",month:"long",day:"numeric",weekday:"long"});renderRecords();renderCompanion()}
+function recordSummary(r){let parts=[];if(r.glucose)parts.push(`血糖 ${esc(r.glucose)} mg/dL${r.measureType?"（"+esc(r.measureType)+"）":""}`);if(r.joint)parts.push("關節："+esc(r.joint));if(r.energy)parts.push("精神："+esc(r.energy));if(r.vision)parts.push("症狀："+esc(r.vision));if(r.notes)parts.push(esc(r.notes));return parts.join("・")||"未填寫其他細節"}
+function recordCard(r){return `<div class="record"><div class="recordtop"><div><h4>${esc(r.date)} ${esc(r.time||"")}</h4><p>${recordSummary(r)}</p></div><div style="display:flex;gap:6px;flex-shrink:0"><button class="btn" data-edit="${r.id}" style="padding:5px 8px;font-size:12px">編輯</button><button class="btn danger" data-delete="${r.id}" style="padding:5px 8px;font-size:12px">刪除</button></div></div></div>`}
+function renderRecords(){const sorted=[...records].sort((a,b)=>(b.date+" "+(b.time||"")).localeCompare(a.date+" "+(a.time||"")));$("recentRecords").innerHTML=sorted.length?sorted.slice(0,3).map(r=>recordCard(r)).join(""):'<div class="empty">目前還沒有健康紀錄。<br>可到「健康紀錄」新增第一筆。</div>';$("allRecords").innerHTML=sorted.length?sorted.map(r=>recordCard(r)).join(""):'<div class="empty">尚無紀錄，新增後會顯示在這裡。</div>';document.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>editRecord(b.dataset.edit));document.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>deleteRecord(b.dataset.delete))}
+function editRecord(id){let r=records.find(x=>x.id===id);if(!r)return;$("editId").value=r.id;$("recordDate").value=r.date;$("recordTime").value=r.time||"";$("glucose").value=r.glucose||"";$("measureType").value=r.measureType||"";$("joint").value=r.joint||"";$("energy").value=r.energy||"";$("vision").value=r.vision||"";$("notes").value=r.notes||"";$("formTitle").textContent="編輯健康紀錄";navigate("records");window.scrollTo({top:0,behavior:"smooth"})}
+function deleteRecord(id){if(!confirm("確定要刪除這筆健康紀錄嗎？此操作無法復原。"))return;records=records.filter(r=>r.id!==id);save("records",records);renderStats();showToast("已刪除紀錄")}
+$("recordForm").addEventListener("submit",e=>{e.preventDefault();let id=$("editId").value;let r={id:id||String(Date.now()),date:$("recordDate").value,time:$("recordTime").value,glucose:$("glucose").value,measureType:$("measureType").value,joint:$("joint").value,energy:$("energy").value,vision:$("vision").value.trim(),notes:$("notes").value.trim()};if(id)records=records.map(x=>x.id===id?r:x);else records.push(r);save("records",records);resetForm();renderStats();showToast(id?"紀錄已更新":"健康紀錄已儲存")});
+function resetForm(){$("recordForm").reset();$("recordDate").value=today();$("editId").value="";$("formTitle").textContent="新增健康紀錄"}
+$("cancelEdit").onclick=resetForm;
+function navigate(page){document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));$("page-"+page).classList.remove("hidden");document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));const titles={home:"健康總覽",actions:"每日行動",records:"健康紀錄",plan:"四週計畫",guide:"健康提醒",games:"互動小遊戲"};$("currentPageTitle").textContent=titles[page]||"安心同行";if(page==="actions")actionMarkup("actionList");window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>navigate(b.dataset.page));document.querySelectorAll("[data-goto]").forEach(b=>b.onclick=()=>navigate(b.dataset.goto));
+document.querySelectorAll(".plancheck").forEach(el=>{el.checked=!!plans[el.dataset.plan];el.onchange=()=>{plans[el.dataset.plan]=el.checked;save("plans",plans);showToast("四週計畫已更新")}})
+document.querySelectorAll(".habit").forEach(el=>{el.checked=!!habits[today()]?.includes(el.dataset.habit);el.onchange=()=>{let h=habits[today()]||[];habits[today()]=el.checked?[...h,el.dataset.habit]:h.filter(x=>x!==el.dataset.habit);save("habits",habits)}})
+$("exportBtn").onclick=()=>{const payload={exportedAt:new Date().toISOString(),records,checks,plans,habits,checkins};const blob=new Blob(["\ufeff",JSON.stringify(payload,null,2)],{type:"application/json;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`安心同行備份_${today()}.json`;a.click();URL.revokeObjectURL(a.href);showToast("已匯出備份檔")}
+$("printBtn").onclick=()=>window.print();
+$("clearAll").onclick=()=>{if(!confirm("確定清除這個瀏覽器中的所有紀錄與勾選狀態？建議先匯出備份。"))return;records=[];checks={};plans={};habits={};checkins={};["records","checks","plans","habits","checkins"].forEach(k=>localStorage.removeItem("安心同行_"+k));document.querySelectorAll(".plancheck,.habit").forEach(e=>e.checked=false);actionMarkup("homeActions");renderStats();showToast("本機資料已清除")}
+$("recordDate").value=today();actionMarkup("homeActions");renderStats();renderQuiz();startMemory();
+</script>
+</body>
+</html>
